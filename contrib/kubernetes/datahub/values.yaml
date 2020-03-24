@@ -1,0 +1,51 @@
+# Default values for datahub.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+datahub-gms:
+  enabled: true
+  image:
+    repository: keremsahin/datahub-gms
+    tag: "latest"
+
+datahub-frontend:
+  enabled: true
+  image:
+    repository: keremsahin/datahub-frontend
+    tag: "latest"
+
+global:
+  elasticsearch:
+    host: "192.168.0.104"
+    port: "9200"
+
+  kafka:
+    bootstrap:
+      server: "192.168.0.104:29092"
+    schemaregistry:
+      url: "http://192.168.0.104:8081"
+
+  neo4j:
+    uri: "bolt://192.168.0.104"
+    username: "neo4j"
+    password: "datahub"
+
+  sql:
+    datasource:
+      host: "192.168.0.104:3306"
+      url: "jdbc:mysql://192.168.0.104:3306/datahub?verifyServerCertificate=false&useSSL=true"
+      driver: "com.mysql.jdbc.Driver"
+      username: "datahub"
+      password: "datahub"
+
+  datahub:
+    gms:
+      host: "datahub-gms-deployment"
+      port: "8080"
+      secret: "YouKnowNothing"
+    appVersion: "1.0"
+
+hostAliases:
+  - ip: "192.168.0.104"
+    hostnames:
+      - "broker"
