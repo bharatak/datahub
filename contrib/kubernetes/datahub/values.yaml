@@ -61,3 +61,9 @@ hostAliases:
   - ip: "192.168.0.104"
     hostnames:
       - "broker"
+
+schema-registry-ui:
+  enabled: true
+  schemaRegistry:
+    url: "http://192.168.0.104"
+    port: "8081"
