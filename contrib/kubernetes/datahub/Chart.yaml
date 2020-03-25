@@ -17,3 +17,11 @@ dependencies:
     version: 0.1.0
     repository: file://./charts/datahub-frontend
     condition: datahub-frontend.enabled
+  - name: datahub-mae-consumer
+    version: 0.1.0
+    repository: file://./charts/datahub-mae-consumer
+    condition: datahub-mae-consumer.enabled
+  - name: datahub-mce-consumer
+    version: 0.1.0
+    repository: file://./charts/datahub-mce-consumer
+    condition: datahub-mce-consumer.enabled

@@ -14,6 +14,18 @@ datahub-frontend:
     repository: keremsahin/datahub-frontend
     tag: "latest"
 
+datahub-mae-consumer:
+  enabled: true
+  image:
+    repository: keremsahin/datahub-mae-consumer
+    tag: "latest"
+
+datahub-mce-consumer:
+  enabled: true
+  image:
+    repository: keremsahin/datahub-mce-consumer
+    tag: "latest"
+
 global:
   elasticsearch:
     host: "192.168.0.104"
