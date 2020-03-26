@@ -83,14 +83,15 @@ helm install datahub datahub/
 
 ## Testing
 For testing this setup, we can use the existing quickstart's [docker-compose](https://github.com/linkedin/datahub/blob/master/docker/quickstart/docker-compose.yml) file but commenting out `data-hub-gms`, `datahub-frontend`, `datahub-mce-consumer` & `datahub-mae-consumer` sections for setting up prerequisite software
-and then performing helm install as mentioned below.  You can use the IP address of Host Machine for elasticsearch, neo4j, schema-registry, broker & mysql.
+and then performing helm install by updating the values.yaml with proper IP address of Host Machine for elasticsearch, neo4j, schema-registry, broker & mysql in `global.hostAliases[0].ip` section.  
 
+
+Alternatively, you can run this command directly without making any changes to `datahub/values.yaml` file
 ``
-helm install --set global.hostAliases[0].ip=<<host-ip-where-docker-is-running>> datahub datahub/
-``
+helm install --set "global.hostAliases[0].ip"="<<docker_host_ip>>","global.hostAliases[0].hostnames"="{broker,mysql,elasticsearch,neo4j}" datahub datahub/
+`` 
 
-
-Other useful commands
+## Other useful commands
 
 | Command | Description | 
 |-----|------|
