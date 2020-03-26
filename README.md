@@ -28,7 +28,7 @@ This repository contains the complete source code for both DataHub's frontend & 
 3. Clone this repo and `cd` into the root directory of the cloned repository.
 4. Run the following command to download and run all Docker containers locally:
     ```
-    cd docker/quickstart && docker-compose pull && docker-compose up --build
+    cd docker/quickstart && source ./quickstart.sh
     ```
     This step takes a while to run the first time, and it may be difficult to tell if DataHub is fully up and running from the combined log. Please use [this guide](https://github.com/linkedin/datahub/blob/master/docs/debugging.md#how-can-i-confirm-if-all-docker-containers-are-running-as-expected-after-a-quickstart) to verify that each container is running correctly.
 5. At this point, you should be able to start DataHub by opening [http://localhost:9001](http://localhost:9001) in your browser. You can sign in using `datahub` as both username and password. However, you'll notice that no data has been ingested yet.
@@ -40,7 +40,7 @@ This repository contains the complete source code for both DataHub's frontend & 
 
 Please refer to the [debugging guide](docs/debugging.md) if you encounter any issues during the quickstart.
 
-## Documents
+## Documentation
 * [DataHub Developer's Guide](docs/developers.md)
 * [DataHub Architecture](docs/architecture/architecture.md)
 * [DataHub Onboarding Guide](docs/how/entity-onboarding.md)
@@ -54,18 +54,17 @@ Please refer to the [debugging guide](docs/debugging.md) if you encounter any is
 ## Releases
 See [Releases](https://github.com/linkedin/datahub/releases) page for more details. We follow the [SemVer Specification](https://semver.org) when versioning the releases and adopt the [Keep a Changelog convention](https://keepachangelog.com/) for the changelog format.
 
+## FAQs
+Frequently Asked Questions about DataHub can be found [here](https://github.com/linkedin/datahub/blob/master/docs/faq.md).
+
 ## Features & Roadmap
 Check out DataHub's [Features](docs/features.md) & [Roadmap](docs/roadmap.md).
 
 ## Contributing
-We welcome contributions from the community. Please refer to [the guidelines](CONTRIBUTING.md) for more details. We also have a [contrib](contrib) directory for incubation. 
-
+We welcome contributions from the community. Please refer to our [Contributing Guidelines](CONTRIBUTING.md) for more details. We also have a [contrib](contrib) directory for incubating experimental features. 
 
 ## Community
-Join our [slack channel](https://app.slack.com/client/TUMKD5EGJ/DV0SB2ZQV/thread/GV2TEEZ5L-1583704023.001100) for important discussions and announcements. You can also find out more about our past and upcoming [town hall meetings](https://github.com/linkedin/datahub/blob/master/docs/townhalls.md).
-
-## FAQs
-Frequently Asked Questions about DataHub can be found [here](https://github.com/linkedin/datahub/blob/master/docs/faq.md).
+Join our [slack workspace](https://app.slack.com/client/TUMKD5EGJ/DV0SB2ZQV/thread/GV2TEEZ5L-1583704023.001100) for important discussions and announcements. You can also find out more about our past and upcoming [town hall meetings](https://github.com/linkedin/datahub/blob/master/docs/townhalls.md).
 
 ## Related Articles & Presentations
 * [DataHub: A Generalized Metadata Search & Discovery Tool](https://engineering.linkedin.com/blog/2019/data-hub)
