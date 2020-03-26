@@ -9,10 +9,6 @@ version: 0.0.1
 # incremented each time you make changes to the application.
 appVersion: latest #0.3.1
 dependencies:
-  - name: schema-registry-ui
-    version: "0.4.1"
-    repository: "https://kubernetes-charts.storage.googleapis.com/"
-    condition: schema-registry-ui.enabled
   - name: datahub-gms
     version: 0.1.0
     repository: file://./charts/datahub-gms

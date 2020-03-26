@@ -68,17 +68,16 @@ tolerations: []
 
 affinity: {}
 
-hostAliases:
-  - ip: "192.168.0.104"
-    hostnames:
-      - "broker"
-      - "mysql"
-      - "elasticsearch"
-      - "neo4j"
-
 global:
   datahub:
     gms:
       host: "datahub-gms-deployment"
       port: "8080"
       secret: "YouKnowNothing"
+  hostAliases:
+    - ip: "192.168.0.104"
+      hostnames:
+        - "broker"
+        - "mysql"
+        - "elasticsearch"
+        - "neo4j"

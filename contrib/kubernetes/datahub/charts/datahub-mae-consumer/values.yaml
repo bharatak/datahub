@@ -68,10 +68,11 @@ tolerations: []
 
 affinity: {}
 
-hostAliases:
-  - ip: "192.168.0.104"
-    hostnames:
-      - "broker"
-      - "mysql"
-      - "elasticsearch"
-      - "neo4j"
+global:
+  hostAliases:
+    - ip: "192.168.0.104"
+      hostnames:
+        - "broker"
+        - "mysql"
+        - "elasticsearch"
+        - "neo4j"

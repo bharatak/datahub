@@ -28,24 +28,24 @@ datahub-mce-consumer:
 
 global:
   elasticsearch:
-    host: "192.168.0.104"
+    host: "elasticsearch"
     port: "9200"
 
   kafka:
     bootstrap:
-      server: "192.168.0.104:29092"
+      server: "broker:29092"
     schemaregistry:
-      url: "http://192.168.0.104:8081"
+      url: "http://schema-registry:8081"
 
   neo4j:
-    uri: "bolt://192.168.0.104"
+    uri: "bolt://neo4j"
     username: "neo4j"
     password: "datahub"
 
   sql:
     datasource:
-      host: "192.168.0.104:3306"
-      url: "jdbc:mysql://192.168.0.104:3306/datahub?verifyServerCertificate=false&useSSL=true"
+      host: "mysql"
+      url: "jdbc:mysql://mysql:3306/datahub?verifyServerCertificate=false&useSSL=true"
       driver: "com.mysql.jdbc.Driver"
       username: "datahub"
       password: "datahub"
@@ -57,13 +57,10 @@ global:
       secret: "YouKnowNothing"
     appVersion: "1.0"
 
-hostAliases:
-  - ip: "192.168.0.104"
-    hostnames:
-      - "broker"
-
-schema-registry-ui:
-  enabled: true
-  schemaRegistry:
-    url: "http://192.168.0.104"
-    port: "8081"
+  hostAliases:
+    - ip: "192.168.0.104"
+      hostnames:
+        - "broker"
+        - "mysql"
+        - "elasticsearch"
+        - "neo4j"
