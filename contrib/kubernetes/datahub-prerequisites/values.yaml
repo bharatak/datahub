@@ -1,0 +1,120 @@
+# Default values for datahub-prerequisites.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: nginx
+  pullPolicy: IfNotPresent
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name:
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: false
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  hosts:
+    - host: chart-example.local
+      paths: []
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+elasticsearch:
+  enabled: true
+#  imageTag: 5.6.8
+#  minimumMasterNodes: 1
+#  replicas: 2
+##  esJavaOpts: "-Xmx1g -Xms1g"
+  clusterHealthCheckParams: wait_for_status=green&timeout=1000s
+#  readinessProbe: null
+  service:
+    type: LoadBalancer
+
+mysql:
+  enabled: false
+  mysqlRootPassword: datahub
+  mysqlUser: datahub
+  mysqlPassword: datahub
+  mysqlDatabase: datahub
+  service:
+    type: LoadBalancer
+  persistence:
+    enabled: true
+  initializationFiles:
+    init.sql: |-
+      -- create metadata aspect table
+      create table metadata_aspect (
+        urn                           varchar(500) not null,
+        aspect                        varchar(200) not null,
+        version                       bigint(20) not null,
+        metadata                      longtext not null,
+        createdon                     datetime(6) not null,
+        createdby                     varchar(255) not null,
+        createdfor                    varchar(255),
+        constraint pk_metadata_aspect primary key (urn,aspect,version)
+      );
+
+      -- create default records for datahub user
+      insert into metadata_aspect (urn, aspect, version, metadata, createdon, createdby) values(
+        'urn:li:corpuser:datahub',
+        'com.linkedin.identity.CorpUserInfo',
+        0,
+        '{"displayName":"Data Hub","active":true,"fullName":"Data Hub","email":"datahub@linkedin.com"}',
+        now(),
+        'urn:li:principal:datahub'
+      ), (
+        'urn:li:corpuser:datahub',
+        'com.linkedin.identity.CorpUserEditableInfo',
+        0,
+        '{"skills":[],"teams":[],"pictureLink":"https://raw.githubusercontent.com/linkedin/datahub/master/datahub-web/packages/data-portal/public/assets/images/default_avatar.png"}',
+        now(),
+        'urn:li:principal:datahub'
+      );

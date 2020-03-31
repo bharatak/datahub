@@ -6,7 +6,7 @@ This directory provides the Kubernetes [Helm](https://helm.sh/) charts for DataH
 ## Setup
 This kubernetes deployment doesn't contain the below artifacts. The idea is to use the original helm charts for deploying each of these separately.   
 
-* Kafka and Schema Registry [Chart Link](https://hub.helm.sh/charts/incubator/kafka)
+* Kafka and Schema Registry [Chart Link]((https://github.com/confluentinc/cp-helm-charts/tree/master/charts/cp-kafka))
 * Elasticsearch [Chart Link](https://hub.helm.sh/charts/elastic/elasticsearch)
 * Mysql [Chart Link](https://hub.helm.sh/charts/stable/mysql)
 * Neo4j [Chart Link](https://hub.helm.sh/charts/stable/neo4j)
@@ -87,6 +87,7 @@ and then performing helm install by updating the values.yaml with proper IP addr
 
 
 Alternatively, you can run this command directly without making any changes to `datahub/values.yaml` file
+
 ``
 helm install --set "global.hostAliases[0].ip"="<<docker_host_ip>>","global.hostAliases[0].hostnames"="{broker,mysql,elasticsearch,neo4j}" datahub datahub/
 `` 

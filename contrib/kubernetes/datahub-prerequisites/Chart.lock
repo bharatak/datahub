@@ -1,0 +1,9 @@
+dependencies:
+- name: mysql
+  repository: https://kubernetes-charts.storage.googleapis.com/
+  version: 1.6.2
+- name: elasticsearch
+  repository: https://helm.elastic.co
+  version: 7.6.1
+digest: sha256:34fc7fb6b572fc6f1cfc2e9b7f8e851ace05039f7c4e4c87cd8e8c3964809a35
+generated: "2020-03-29T11:53:41.803338+05:30"
